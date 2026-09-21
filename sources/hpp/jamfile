@@ -1,0 +1,22 @@
+headers
+=
+	dotit/dotit.hpp
+;
+
+install
+	install-headers
+:
+	$(headers)
+:
+	<location>$(prefix)/include
+	<install-source-root>.
+;
+explicit install-headers ;
+
+alias
+	install
+:
+	install-headers
+;
+explicit install ;
+

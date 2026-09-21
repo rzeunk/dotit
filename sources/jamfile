@@ -5,5 +5,22 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 #
 
+path-constant src-dir : . ;
+path-constant src-hpp-dir : ./hpp ;
+
+project
+	dotit-sources
+:
+	requirements
+		<include>$(src-hpp-dir)
+:
+	default-build
+		<cxxstd>26
+;
+
 build-project cpp ;
+build-project tests ;
+
+alias install : ./cpp//install ./hpp//install ;
+explicit install ;
 

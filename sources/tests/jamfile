@@ -1,0 +1,26 @@
+#
+# Copyright (c) 2026 Rzeunk
+#
+# Distributed under the Boost Software License, Version 1.0. (See accompanying
+# file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+#
+
+import testing ;
+
+project
+	dotit-tests
+:
+	requirements
+		<library>../cpp//dotit
+;
+
+progs
+=
+	dotit
+;
+
+for prog in $(progs)
+{
+	unit-test $(prog) : $(prog).cpp ;
+}
+

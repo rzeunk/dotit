@@ -5,5 +5,38 @@
 # file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 #
 
-echo "Hello World !" ;
+cpps
+=
+	dotit.cpp
+;
+
+lib
+	dotit
+:
+	$(cpps)
+:
+	<version>$(version)
+	<tag>@make-version
+;
+
+import common ;
+
+rule make-version ( name : type ? : props )
+{
+	local name = [ common.format-name <base> : $(name) : $(type) : $(props) ] ;
+	local version = [ $(props).get <version> ] ;
+	return $(name).$(version) ;
+}
+
+install
+	install-lib
+:
+	dotit
+:
+	<location>$(prefix)/lib
+;
+explicit install-lib ;
+
+alias install : install-lib ;
+explicit install ;
 
